@@ -1,139 +1,57 @@
-var width = d3.select('svg').attr('width');
-var height = d3.select('svg').attr('height');
+var svg = d3.select("svg"),
+    margin = {top: 80, right: 20, bottom: 80, left: 40},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom;
 
-var marginLeft = 100;
-var marginTop = 100;
+var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+    y = d3.scaleLinear().rangeRound([height, 0]);
 
+var g = svg.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 var nestedData = [];
 
-var svg = d3.select('svg')
-    .append('g')
-    .attr('transform', 'translate(' + marginLeft + ',' + marginTop + ')');
-
-//these are the size that the axes will be on the screen; set the domain values after the data loads.
-var scaleX = d3.scaleBand().rangeRound([0, 600]).padding(0.1);
-var scaleY = d3.scaleLinear().range([400, 0]);
-
-
-//import the data from the .csv file
-d3.csv('./countryData_topten.csv', function(dataIn){
-
+d3.csv("./brent201716.csv", function(dataIn) {
     nestedData = d3.nest()
-        .key(function(d){return d.year})
-        .entries(dataIn);
+    .key(function(d){return d.year})
+    .entries(dataIn);
 
-    var loadData = nestedData.filter(function(d){return d.key == '1987'})[0].values;
+    var loadData = nestedData.filter(function(d){return d.key == '2017'})[0].values;
 
-    // Add the x Axis
-    svg.append("g")
-        .attr('class','xaxis')
-        .attr('transform','translate(0,400)')  //move the x axis from the top of the y axis to the bottom
-        .call(d3.axisBottom(scaleX));
+    x.domain(loadData.map(function(d) { return d.neighborhood; }));
+    y.domain([0, d3.max(loadData, function(d) { return d.rent; })]);
 
-    svg.append("g")
-        .attr('class', 'yaxis')
-        .call(d3.axisLeft(scaleY));
 
-/*
-    svg.append('text')
-        .text('Weekly income by age and gender')
-        .attr('transform','translate(300, -20)')
-        .style('text-anchor','middle');
+    g.append("g")
+        .attr("class", "axis axis--x")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x))
+        .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", ".15em")
+        .attr("transform", function(d) {
+            return "rotate(-45)"
+        });
 
-    svg.append('text')
-        .text('age group')
-        .attr('transform','translate(260, 440)');
 
-    svg.append('text')
-        .text('weekly income')
-        .attr('transform', 'translate(-50,250)rotate(270)');
+    g.append("g")
+        .attr("class", "axis axis--y")
+        .call(d3.axisLeft(y).ticks(10))
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", "0.71em")
+        .attr("text-anchor", "end")
+        .text("rent");
 
-        */
+    g.selectAll(".bar")
+        .data(loadData)
+        .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return x(d.neighborhood); })
+        .attr("y", function(d) { return y(d.rent); })
+        .attr("width", x.bandwidth())
+        .attr("height", function(d) { return height - y(d.rent); })
 
-    //bind the data to the d3 selection, but don't draw it yet
-    //svg.selectAll('rect')
-    //    .data(loadData, function(d){return d;});
-
-    //call the drawPoints function below, and hand it the data2016 variable with the 2016 object array in it
-    drawPoints(loadData);
 
 });
-
-//this function draws the actual data points as circles. It's split from the enter() command because we want to run it many times
-//without adding more circles each time.
-function drawPoints(pointData){
-
-    scaleX.domain(pointData.map(function(d){return d.countryCode;}));
-    scaleY.domain([0, d3.max(pointData.map(function(d){return +d.totalPop}))]);
-
-    d3.selectAll('.xaxis')
-        .call(d3.axisBottom(scaleX));
-
-    d3.selectAll('.yaxis')
-        .call(d3.axisLeft(scaleY));
-
-    //select all bars in the DOM, and bind them to the new data
-    var rects = svg.selectAll('.bars')
-        .data(pointData, function(d){return d.countryCode;});
-
-    //look to see if there are any old bars that don't have keys in the new data list, and remove them.
-    rects.exit()
-        .remove();
-
-    //update the properties of the remaining bars (as before)
-    rects
-        .transition()
-        .duration(200)
-        .attr('x',function(d){
-            return scaleX(d.countryCode);
-        })
-        .attr('y',function(d){
-            return scaleY(d.totalPop);
-        })
-        .attr('width',function(d){
-            return scaleX.bandwidth();
-        })
-        .attr('height',function(d){
-            return 400 - scaleY(d.totalPop);  //400 is the beginning domain value of the y axis, set above
-        });
-
-    //add the enter() function to make bars for any new countries in the list, and set their properties
-    rects
-        .enter()
-        .append('rect')
-        .attr('class','bars')
-        .attr('fill', "slategray")
-        .attr('x',function(d){
-            return scaleX(d.countryCode);
-        })
-        .attr('y',function(d){
-            return scaleY(d.totalPop);
-        })
-        .attr('width',function(d){
-            return scaleX.bandwidth();
-        })
-        .attr('height',function(d){
-            return 400 - scaleY(d.totalPop);  //400 is the beginning domain value of the y axis, set above
-        });
-
-    //take out bars for any old countries that no longer exist
-    //rects.exit()
-    //    .remove();
-
-
-
-}
-
-
-function updateData(selectedYear){
-    return nestedData.filter(function(d){return d.key == selectedYear})[0].values;
-}
-
-
-//this function runs when the HTML slider is moved
-function sliderMoved(value){
-
-    newData = updateData(value);
-    drawPoints(newData);
-
-}

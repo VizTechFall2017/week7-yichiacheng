@@ -18,7 +18,7 @@ var svg2 = d3.select('#svg2')
 //these are the size that the axes will be on the screen; set the domain values after the data loads.
 var scaleX = d3.scaleBand().rangeRound([0, width-2*marginLeft]).padding(0.1);
 var scaleY = d3.scaleLinear().range([height-2*marginTop, 0]);
-
+var scaleY2 = d3.scaleLinear().range([height-2*marginTop, 0]);
 
 //import the data from the .csv file
 d3.csv('./countryData_topten.csv', function(dataIn){
@@ -45,24 +45,24 @@ d3.csv('./countryData_topten.csv', function(dataIn){
         .call(d3.axisBottom(scaleX));
 
     svg2.append("g")
-        .attr('class', 'yaxis')
-        .call(d3.axisLeft(scaleY));
+        .attr('class', 'yaxis2')
+        .call(d3.axisLeft(scaleY2));
 
-/*
-    svg.append('text')
-        .text('Weekly income by age and gender')
-        .attr('transform','translate(300, -20)')
-        .style('text-anchor','middle');
+    /*
+        svg.append('text')
+            .text('Weekly income by age and gender')
+            .attr('transform','translate(300, -20)')
+            .style('text-anchor','middle');
 
-    svg.append('text')
-        .text('age group')
-        .attr('transform','translate(260, 440)');
+        svg.append('text')
+            .text('age group')
+            .attr('transform','translate(260, 440)');
 
-    svg.append('text')
-        .text('weekly income')
-        .attr('transform', 'translate(-50,250)rotate(270)');
+        svg.append('text')
+            .text('weekly income')
+            .attr('transform', 'translate(-50,250)rotate(270)');
 
-        */
+            */
 
     //bind the data to the d3 selection, but don't draw it yet
     //svg.selectAll('rect')
@@ -79,12 +79,16 @@ function drawPoints(pointData){
 
     scaleX.domain(pointData.map(function(d){return d.countryCode;}));
     scaleY.domain([0, d3.max(pointData.map(function(d){return +d.totalPop}))]);
+    scaleY2.domain([0, d3.max(pointData.map(function(d){return +d.caloriesPerCap}))]);
 
     d3.selectAll('.xaxis')
         .call(d3.axisBottom(scaleX));
 
     d3.selectAll('.yaxis')
         .call(d3.axisLeft(scaleY));
+
+    d3.selectAll('.yaxis2')
+        .call(d3.axisLeft(scaleY2));
 
     //select all bars in SVG1, and bind them to the new data
     var rects = svg.selectAll('.bars')
@@ -116,6 +120,7 @@ function drawPoints(pointData){
         .enter()
         .append('rect')
         .attr('class','bars')
+        .attr('id', function(d){return d.countryCode;})
         .attr('fill', "slategray")
         .attr('x',function(d){
             return scaleX(d.countryCode);
@@ -128,8 +133,19 @@ function drawPoints(pointData){
         })
         .attr('height',function(d){
             return height-2*marginTop - scaleY(d.totalPop);  //400 is the beginning domain value of the y axis, set above
-        });
+        })
+        .on('mouseover', function(d){
+            d3.select(this).attr('fill','purple');
 
+            currentID = d3.select(this).attr('id');
+            svg2.selectAll('#' + currentID).attr('fill','purple')
+        })
+        .on('mouseout', function(d){
+            d3.select(this).attr('fill','slategray');
+
+            currentID = d3.select(this).attr('id');
+            svg2.selectAll('#' + currentID).attr('fill','slategray')
+        });
 
 
 
@@ -150,13 +166,13 @@ function drawPoints(pointData){
             return scaleX(d.countryCode);
         })
         .attr('y',function(d){
-            return scaleY(d.totalPop);
+            return scaleY2(d.caloriesPerCap);
         })
         .attr('width',function(d){
             return scaleX.bandwidth();
         })
         .attr('height',function(d){
-            return height-2*marginTop - scaleY(d.totalPop);  //400 is the beginning domain value of the y axis, set above
+            return height-2*marginTop - scaleY2(d.caloriesPerCap);  //400 is the beginning domain value of the y axis, set above
         });
 
     //add the enter() function to make bars for any new countries in the list, and set their properties
@@ -164,18 +180,32 @@ function drawPoints(pointData){
         .enter()
         .append('rect')
         .attr('class','bars')
+        .attr('id', function(d){return d.countryCode;})
         .attr('fill', "slategray")
         .attr('x',function(d){
             return scaleX(d.countryCode);
         })
         .attr('y',function(d){
-            return scaleY(d.totalPop);
+            return scaleY2(d.caloriesPerCap);
         })
         .attr('width',function(d){
             return scaleX.bandwidth();
         })
         .attr('height',function(d){
-            return height-2*marginTop - scaleY(d.totalPop);  //400 is the beginning domain value of the y axis, set above
+            return height-2*marginTop - scaleY2(d.caloriesPerCap);  //400 is the beginning domain value of the y axis, set above
+        })
+        //加入滑鼠滑過去會變色的效果
+        .on('mouseover', function(d){
+            d3.select(this).attr('fill','purple');
+
+            currentID = d3.select(this).attr('id');
+            svg.selectAll('#' + currentID).attr('fill','purple')
+        })
+        .on('mouseout', function(d){
+            d3.select(this).attr('fill','slategray');
+
+            currentID = d3.select(this).attr('id');
+            svg.selectAll('#' + currentID).attr('fill','slategray')
         });
 
 

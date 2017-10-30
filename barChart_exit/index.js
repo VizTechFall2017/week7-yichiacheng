@@ -16,7 +16,7 @@ var scaleY = d3.scaleLinear().range([400, 0]);
 
 
 //import the data from the .csv file
-d3.csv('./countryData.csv', function(dataIn){
+d3.csv('./countryData_topten.csv', function(dataIn){
 
     nestedData = d3.nest()
         .key(function(d){return d.year})
@@ -69,13 +69,46 @@ d3.csv('./countryData.csv', function(dataIn){
 //without adding more circles each time.
 function drawPoints(pointData){
 
+    scaleX.domain(pointData.map(function(d){return d.countryCode;}));
     scaleY.domain([0, d3.max(pointData.map(function(d){return +d.totalPop}))]);
 
-    svg.selectAll('.yaxis')
+    d3.selectAll('.xaxis')
+        .call(d3.axisBottom(scaleX));
+
+    d3.selectAll('.yaxis')
         .call(d3.axisLeft(scaleY));
 
-    svg.selectAll('rect')
-        .data(pointData)
+    //select all bars in the DOM, and bind them to the new data
+    var rects = svg.selectAll('.bars')
+        .data(pointData, function(d){return d.countryCode;});
+
+    //look to see if there are any old bars that don't have keys in the new data list.
+    // And remove them. Keep the old unchanged ones
+    rects.exit()
+        .remove();
+
+    //update the properties of the remaining bars (as before)
+    rects
+        .transition()
+        .duration(1000)
+        .attr('x',function(d){
+            return scaleX(d.countryCode);
+        })
+        .attr('y',function(d){
+            return scaleY(d.totalPop);
+        })
+        .attr('width',function(d){
+            return scaleX.bandwidth();
+        })
+        .attr('height',function(d){
+            return 400 - scaleY(d.totalPop);  //400 is the beginning domain value of the y axis, set above
+        });
+
+    rects
+        .enter()
+        .append('rect')
+        .attr('class','bars')
+        .attr('fill', "slategray")
         .attr('x',function(d){
             return scaleX(d.countryCode);
         })
@@ -90,6 +123,7 @@ function drawPoints(pointData){
         });
 
 }
+
 
 
 function updateData(selectedYear){

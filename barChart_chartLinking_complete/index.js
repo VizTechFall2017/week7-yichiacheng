@@ -194,6 +194,7 @@ function drawPoints(pointData){
         .attr('height',function(d){
             return height-2*marginTop - scaleY2(d.caloriesPerCap);  //400 is the beginning domain value of the y axis, set above
         })
+        //加入滑鼠滑過去會變色的效果
         .on('mouseover', function(d){
             d3.select(this).attr('fill','purple');
 
