@@ -55,3 +55,55 @@ d3.csv("./brent201716.csv", function(dataIn) {
 
 
 });
+
+bars.exit()
+    .remove();
+
+//update the properties of the remaining bars (as before)
+bars
+    .transition()
+    .duration(200)
+    .attr('x',function(d){
+        return scaleX(d.neighborhood);
+    })
+    .attr('y',function(d){
+        return scaleY(d.rent);
+    })
+    .attr('width',function(d){
+        return scaleX.bandwidth();
+    })
+    .attr('height',function(d){
+        height - y(d.rent)  //400 is the beginning domain value of the y axis, set above
+    });
+
+//add the enter() function to make bars for any new countries in the list, and set their properties
+rects
+    .enter()
+    .append('rect')
+    .attr('class','bars')
+    .attr('fill', "slategray")
+    .attr('x',function(d){
+        return scaleX(d.neighborhood);
+    })
+    .attr('y',function(d){
+        return scaleY(d.rent);
+    })
+    .attr('width',function(d){
+        return scaleX.bandwidth();
+    })
+    .attr('height',function(d){
+        return 400 - scaleY(d.rent);  //400 is the beginning domain value of the y axis, set above
+    });
+
+
+function updateData(selectedYear){
+    return nestedData.filter(function(d){return d.key == selectedYear})[0].values;
+}
+
+
+//this function runs when the HTML slider is moved
+
+
+    newData = updateData(value);
+    drawPoints(newData);
+

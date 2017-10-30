@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95d475f2-80fb-45b8-b286-871abc5e435d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PS01/index.js" afterPath="$PROJECT_DIR$/PS01/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/barChart_chartLinking/index.js" afterPath="$PROJECT_DIR$/barChart_chartLinking/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/barChart_chartLinking_complete/index.js" afterPath="$PROJECT_DIR$/barChart_chartLinking_complete/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/barChart_exit/index.js" afterPath="$PROJECT_DIR$/barChart_exit/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/barChart_twoSVGs/index.html" afterPath="$PROJECT_DIR$/barChart_twoSVGs/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/barChart_twoSVGs/index.js" afterPath="$PROJECT_DIR$/barChart_twoSVGs/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/barChart_twoSVGs/style.css" afterPath="$PROJECT_DIR$/barChart_twoSVGs/style.css" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PS01/brent2016.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PS01/brent2017.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PS01/brent201716.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PS01/countryData_topten.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PS01/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PS01/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PS01/libraries/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PS01/libraries/bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PS01/libraries/d3.v4.2.6.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PS01/libraries/jquery-3.2.1.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PS01/style.css" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,41 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/barChart_chartLinking/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="653">
-              <caret line="71" column="2" lean-forward="true" selection-start-line="71" selection-start-column="2" selection-end-line="71" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/PS02/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="62" lean-forward="true" selection-start-line="3" selection-start-column="62" selection-end-line="3" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PS02/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="117" column="5" lean-forward="false" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/barChart_exit_complete/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="114" lean-forward="true" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="114" />
+            <state relative-caret-position="148">
+              <caret line="118" column="8" lean-forward="true" selection-start-line="118" selection-start-column="8" selection-end-line="118" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -66,8 +39,38 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/barChart_chartLinking_complete/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="84" lean-forward="true" selection-start-line="25" selection-start-column="3" selection-end-line="29" selection-end-column="84" />
+            <state relative-caret-position="-2623">
+              <caret line="18" column="37" lean-forward="true" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PS02/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="481">
+              <caret line="62" column="4" lean-forward="false" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="brent201716.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PS02/brent201716.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/barChart_exit_complete/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="557">
+              <caret line="138" column="1" lean-forward="true" selection-start-line="79" selection-start-column="4" selection-end-line="138" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -151,17 +154,17 @@
             <path>
               <item name="week7-yichiacheng" type="b2602c69:ProjectViewProjectNode" />
               <item name="week7-yichiacheng" type="462c0819:PsiDirectoryNode" />
+              <item name="barChart_exit_complete" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="week7-yichiacheng" type="b2602c69:ProjectViewProjectNode" />
+              <item name="week7-yichiacheng" type="462c0819:PsiDirectoryNode" />
               <item name="barChart_twoSVGs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="week7-yichiacheng" type="b2602c69:ProjectViewProjectNode" />
               <item name="week7-yichiacheng" type="462c0819:PsiDirectoryNode" />
               <item name="barChart_twoSVGs_complete" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="week7-yichiacheng" type="b2602c69:ProjectViewProjectNode" />
-              <item name="week7-yichiacheng" type="462c0819:PsiDirectoryNode" />
-              <item name="PS01" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="week7-yichiacheng" type="b2602c69:ProjectViewProjectNode" />
@@ -205,12 +208,12 @@
       <updated>1508885346997</updated>
       <workItem from="1508885348447" duration="5650000" />
       <workItem from="1509370124693" duration="8219000" />
-      <workItem from="1509381123002" duration="2899000" />
+      <workItem from="1509381123002" duration="4228000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16768000" />
+    <option name="totallyTimeSpent" value="18097000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="709" extended-state="6" />
@@ -413,18 +416,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/barChart_exit_complete/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1890">
-          <caret line="126" column="0" lean-forward="true" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/barChart_chartLinking_complete/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="84" lean-forward="true" selection-start-line="25" selection-start-column="3" selection-end-line="29" selection-end-column="84" />
+        <state relative-caret-position="-2623">
+          <caret line="18" column="37" lean-forward="true" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
           <folding />
         </state>
       </provider>
@@ -432,31 +427,47 @@
     <entry file="file://$PROJECT_DIR$/barChart_exit_complete/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="20" column="114" lean-forward="true" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="114" />
+          <caret line="20" column="114" lean-forward="false" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="114" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/barChart_chartLinking/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="71" column="2" lean-forward="true" selection-start-line="71" selection-start-column="2" selection-end-line="71" selection-end-column="25" />
+        <state relative-caret-position="705">
+          <caret line="47" column="32" lean-forward="false" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PS02/index.html">
+    <entry file="file://$PROJECT_DIR$/PS02/brent201716.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/barChart_exit_complete/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="557">
-          <caret line="117" column="5" lean-forward="false" selection-start-line="117" selection-start-column="5" selection-end-line="117" selection-end-column="5" />
+          <caret line="138" column="1" lean-forward="true" selection-start-line="79" selection-start-column="4" selection-end-line="138" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PS02/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="62" lean-forward="true" selection-start-line="3" selection-start-column="62" selection-end-line="3" selection-end-column="62" />
+        <state relative-caret-position="481">
+          <caret line="62" column="4" lean-forward="false" selection-start-line="62" selection-start-column="4" selection-end-line="62" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PS02/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="118" column="8" lean-forward="true" selection-start-line="118" selection-start-column="8" selection-end-line="118" selection-end-column="8" />
           <folding />
         </state>
       </provider>
